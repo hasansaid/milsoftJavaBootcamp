@@ -1,4 +1,4 @@
-package statics;
+package Statics;
 
 import enums.Day;
 

@@ -1,4 +1,4 @@
-package statics;
+package Statics;
 
 public class Test {
     public static void main(String[] args) {
