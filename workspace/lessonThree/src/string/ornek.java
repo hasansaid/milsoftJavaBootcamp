@@ -17,7 +17,6 @@ public class ornek {
     public static void main(String[] args) {
         //nesne => string builder
         //string =>nesne split
-        //formatı string ile ekrana mı basın dedi anlamadım
         Product product = new Product();
         ProductConverter converter = new ProductConverter();
         String line = converter.format(product);
