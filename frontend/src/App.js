@@ -9,7 +9,8 @@ import './App.css';
 // import Maplist from './further/Maplist';
 // import {MapTable} from './further/MapTable';
 // import MapContainer from './example/MapContainer';
-import SelectComponent from './further/SelectComponent';
+// import SelectComponent from './further/SelectComponent';
+import SelectFunctionComponent from './further/SelectFunctionComponent';
 
 function App () {
   return (
@@ -26,7 +27,8 @@ function App () {
         {/* <Maplist /> */}
         {/* <MapTable /> */}
         {/* <MapContainer /> */}
-        <SelectComponent />
+        {/* <SelectComponent /> */}
+        <SelectFunctionComponent />
       </header>
     </div>
   );

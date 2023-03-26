@@ -23,10 +23,12 @@ export default class SelectComponent extends React.Component {
     }
     this.setState({
       currentProductId: currentProductId,
+      currentProduct: this.products.find((p) => p.id === currentProductId),
     });
   }
 
   save(event) {
+    event.preventDefault();
     if (this.state.currentProductId !== 0) {
       alert(`Saklanıyor ${this.state.currentProduct.name}`);
     } else {
