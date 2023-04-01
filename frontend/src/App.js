@@ -1,4 +1,6 @@
 import './App.css';
+import FetchGet from './fetch/FetchGet';
+// import FetchList from './fetch/FetchList';
 // import EventComponent from './component/EventComponent';
 // import FunctionComponent from './component/FunctionComponent';
 // import ObjectComponent from './component/ObjectComponent';
@@ -10,7 +12,8 @@ import './App.css';
 // import {MapTable} from './further/MapTable';
 // import MapContainer from './example/MapContainer';
 // import SelectComponent from './further/SelectComponent';
-import SelectFunctionComponent from './further/SelectFunctionComponent';
+// import SelectFunctionComponent from './further/SelectFunctionComponent';
+import FetchList from './fetch/FetchList';
 
 function App () {
   return (
@@ -28,7 +31,10 @@ function App () {
         {/* <MapTable /> */}
         {/* <MapContainer /> */}
         {/* <SelectComponent /> */}
-        <SelectFunctionComponent />
+        {/* <SelectFunctionComponent /> */}
+        <FetchList />
+        <FetchGet />
+        {/* <Deneme /> */}
       </header>
     </div>
   );
