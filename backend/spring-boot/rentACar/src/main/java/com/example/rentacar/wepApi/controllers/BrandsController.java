@@ -22,7 +22,7 @@ public class BrandsController {
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody() CreateBrandRequest createBrandRequest){
+    public void add(CreateBrandRequest createBrandRequest){
     this.brandService.add(createBrandRequest);
     }
 }
