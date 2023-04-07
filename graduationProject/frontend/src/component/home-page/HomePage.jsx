@@ -49,13 +49,11 @@ const HomePage = () => {
                         Giriş Yap
                       </a>
                     </span>
-                    <a
-                      className="btn btn-light action-button"
-                      role="button"
-                      href="#"
-                    >
-                      Kayıt Ol
-                    </a>
+                    <span className="ms-3 navbar-text">
+                      <a className="login" href="#">
+                        Kayıt Ol
+                      </a>
+                    </span>
                   </div>
                 </div>
               </div>
