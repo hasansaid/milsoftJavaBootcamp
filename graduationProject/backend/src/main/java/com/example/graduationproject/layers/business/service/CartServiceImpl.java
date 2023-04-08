@@ -58,7 +58,7 @@ public class CartServiceImpl implements CartService {
             cartDTO.setCartProducts(cartProductDTOs);
             return cartDTO;
         } else {
-                throw new Exception("Cart not found with id " + cartId);
+                throw new Exception("Sepet bulunamadı id : " + cartId);
         }
     }
 
@@ -75,6 +75,32 @@ public class CartServiceImpl implements CartService {
             if (optionalCartProduct.isPresent()) {
                 cartProduct = optionalCartProduct.get();
                 cartProduct.setSalesQuantity(cartProduct.getSalesQuantity() + quantity);
+            } else {
+                cartProduct = new CartProduct();
+                cartProduct.setCart(cart);
+                cartProduct.setProduct(product);
+                cartProduct.setSalesQuantity(quantity);
+            }
+            cartProductRepository.save(cartProduct);
+        } else {
+            throw new Exception("Cart or product not found with id " + cartId + " or " + productId);
+        }
+    }
+    @SneakyThrows
+    @Override
+    public void minusProductToCart(int cartId, int productId, int quantity) {
+        Optional<Cart> optionalCart = cartRepository.findByCartId(cartId);
+        Optional<Product> optionalProduct = productRepository.findByProductId(productId);
+        if (optionalCart.isPresent() && optionalProduct.isPresent()) {
+            Cart cart = optionalCart.get();
+            Product product = optionalProduct.get();
+            Optional<CartProduct> optionalCartProduct = cartProductRepository.findByCart_CartIdAndProduct_ProductId(cartId, productId);
+            CartProduct cartProduct;
+            if (optionalCartProduct.isPresent()) {
+                cartProduct = optionalCartProduct.get();
+               if(cartProduct.getSalesQuantity()>1){
+                   cartProduct.setSalesQuantity(cartProduct.getSalesQuantity() - quantity);
+               }
             } else {
                 cartProduct = new CartProduct();
                 cartProduct.setCart(cart);
@@ -107,9 +133,23 @@ public class CartServiceImpl implements CartService {
             cart.setCartStatus(CartStatus.COMPLETED);
             cartRepository.save(cart);
         } else {
-            throw new Exception("Cart not found with id " + cartId);
+            throw new Exception("Sepet bulunamadı id : " + cartId);
         }
     }
+
+    @SneakyThrows
+    @Override
+    public void reCheckoutCart(int cartId) {
+        Optional<Cart> optionalCart = cartRepository.findByCartId(cartId);
+        if (optionalCart.isPresent()) {Cart cart = optionalCart.get();
+            cart.setCartStatus(CartStatus.NEW);
+            cartRepository.save(cart);
+        } else {
+            throw new Exception("Sepet bulunamadı id : " + cartId);
+        }
+    }
+
+
 }
 
 

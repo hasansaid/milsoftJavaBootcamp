@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import pro from "../../../assets/14pro.png";
 import { useNavigate, useParams } from "react-router-dom";
 
-const ProductsComponent = () => {
+const ProductsComponent = ({ cartStatus }) => {
   const { categoryId } = useParams();
+  const [cart, setCart] = useState(undefined);
 
   const urlList = `http://localhost:8080/api/product?category_id=${
     categoryId ?? 1
@@ -12,6 +13,12 @@ const ProductsComponent = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    fetch("http://localhost:8080/api/cart/get/1")
+      .then((data) => data.json())
+      .then((cart) => {
+        setCart(cart);
+        console.log(cart);
+      });
     fetch(urlList)
       .then((data) => data.json())
       .then((product) => {
@@ -26,11 +33,10 @@ const ProductsComponent = () => {
   };
 
   const addToBasket = (product) => {
-    console.log(product.category.categoryId);
-    console.log(product.productId);
-    const url = `http://localhost:8080/api/cart/add/1/${product.productId}?quantity=1`;
-    fetch(url, { method: "POST" }).then((response) => response.json());
-    // navigate("/products/basket");
+    if (cart.cartStatus != "COMPLETED") {
+      const url = `http://localhost:8080/api/cart/add/1/${product.productId}?quantity=1`;
+      fetch(url, { method: "POST" }).then((response) => response.json());
+    } else alert("Sepetiniz onaylanmıştır!!");
   };
   return (
     <div>
@@ -39,7 +45,11 @@ const ProductsComponent = () => {
           <div key={product.productId} className="col">
             <div className="card h-100">
               <div className="d-flex justify-content-center">
-                <img src={pro} className="card-img-top" alt="" />
+                <img
+                  src={require(`../../../assets/14pro.png`)}
+                  className="card-img-top"
+                  alt=""
+                />
               </div>
               <div className="card-body">
                 <h5 className="card-title">{product.productName}</h5>

@@ -23,18 +23,29 @@ public class CartController {
     @PostMapping("/add/{cartid}/{productid}")
     public ResponseEntity<String> addProductToCart(@PathVariable("cartid") int cartid, @PathVariable("productid") int productid, @RequestParam int quantity) {
         cartService.addProductToCart(cartid, productid, quantity);
-        return ResponseEntity.ok("Product added to cart successfully.");
+        return ResponseEntity.ok("Ürün sepete eklendi.");
+    }
+
+    @PostMapping("/minus/{cartid}/{productid}")
+    public ResponseEntity<String> minusProductToCart(@PathVariable("cartid") int cartid, @PathVariable("productid") int productid, @RequestParam int quantity) {
+        cartService.minusProductToCart(cartid, productid, quantity);
+        return ResponseEntity.ok("Ürün sepete eklendi.");
     }
 
     @DeleteMapping("/remove/{cartid}/{productid}")
     public ResponseEntity<String> removeProductFromCart(@PathVariable("cartid") int cartid, @PathVariable("productid") int productid) {
         cartService.removeProductFromCart(cartid, productid);
-        return ResponseEntity.ok("Product removed from cart successfully.");
+        return ResponseEntity.ok("Ürün sepetten kaldırıldı.");
     }
 
     @PostMapping("/checkout/{id}")
     public ResponseEntity<String> checkoutCart(@PathVariable int id) {
         cartService.checkoutCart(id);
-        return ResponseEntity.ok("Cart checked out successfully.");
+        return ResponseEntity.ok("Sepet onaylandı.");
+    }
+    @PostMapping("/reCheckout/{id}")
+    public ResponseEntity<String> reCheckoutCart(@PathVariable int id) {
+        cartService.reCheckoutCart(id);
+        return ResponseEntity.ok("Sepet iptal edildi");
     }
 }

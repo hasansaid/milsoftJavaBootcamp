@@ -6,8 +6,10 @@ public interface CartService {
     CartDto getCartById(int cartId);
 
     void addProductToCart( int cartId, int productId, int quantity);
+    void minusProductToCart( int cartId, int productId, int quantity);
 
     void removeProductFromCart(int cartId, int productId);
 
     void checkoutCart(int cartId);
+    void reCheckoutCart(int cartId);
 }
