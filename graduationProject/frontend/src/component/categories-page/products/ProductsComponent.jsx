@@ -41,12 +41,12 @@ const ProductsComponent = ({ cartStatus }) => {
   return (
     <div>
       <div className="row row-cols-1 row-cols-md-4 g-3">
-        {products.map((product) => (
-          <div key={product.productId} className="col">
+        {products.map((product, index) => (
+          <div key={index} className="col">
             <div className="card h-100">
               <div className="d-flex justify-content-center">
                 <img
-                  src={require(`../../../assets/14pro.png`)}
+                  src={require(`../../../assets/${product.image}`)}
                   className="card-img-top"
                   alt=""
                 />

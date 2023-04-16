@@ -8,6 +8,7 @@ public class ProductDto {
     private int productId;
     private String productName;
     private double salesPrice;
+    private String image;
     private CategoryDto category;
 
 }

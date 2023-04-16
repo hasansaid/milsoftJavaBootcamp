@@ -30,13 +30,17 @@ const ProductDetailComponent = () => {
   };
   return (
     <div className="d-flex justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <button onClick={goToProducts} class="btn text-muted mb-1">
           Ürünlere Dön
         </button>
-        <div class="card h-100">
+        <div class="card h-80">
           <div class="d-flex justify-content-center">
-            <img src={pro} class="card-img-top" alt="" />
+            <img
+              src={require(`../../../assets/${product.image}`)}
+              class="card-img-top w-80"
+              alt=""
+            />
           </div>
           <div class="card-body">
             <h5 class="card-title">{product.productName}</h5>

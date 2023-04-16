@@ -26,23 +26,6 @@ public class ProductController {
     }
 
 
-    /*@GetMapping("/add/{id}")
-    public String addProduct(@PathVariable("id") int categoryId){
-
-        Product product = new Product();
-        product.setProductName("Kareli Defter");
-        product.setSalesPrice(30);
-
-        Optional<Category> optional = categoryRepository.findById(categoryId);
-        if(optional.isPresent()){
-            Category category = optional.get();
-            product.setCategory(category);
-            productRepository.save(product);
-            return "Çalışan ismi : " + product.getProductName() + " Çalıştığı Departman : " +product.getCategory().getCategoryName();
-        }
-
-        return "Eklenemedi";
-    }*/
 
 
 }

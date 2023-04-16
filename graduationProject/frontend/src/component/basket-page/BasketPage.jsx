@@ -104,7 +104,10 @@ const BasketPage = () => {
                       cart.cartProducts
                         .map((cartProduct) => cartProduct.salesQuantity)
                         .reduce((a, b) => a + b, 0)}{" "}
-                    -- Sepet sahibi: {cart && toUpperCaseTR(cart.customerName)}{" "}
+                    -- Sepet sahibi: {"  "}
+                    <span style={{ color: "red" }}>
+                      {cart && toUpperCaseTR(cart.customerName)}
+                    </span>{" "}
                     ){" "}
                   </small>
                 </div>
