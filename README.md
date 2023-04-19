@@ -13,6 +13,10 @@
 
 ![productspage2](https://github.com/hasansaid/milsoftJavaBootcamp/blob/main/productspage2.png)
 
+<h3> Product Detail Page <h3>
+
+![productdetailpage](https://github.com/hasansaid/milsoftJavaBootcamp/blob/main/productdetailpage.png)
+
 <h3> Cart Page <h3>
 
 ![cartpage](https://github.com/hasansaid/milsoftJavaBootcamp/blob/main/cartpage.png)
